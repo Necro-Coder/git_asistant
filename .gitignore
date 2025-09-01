@@ -1,0 +1,47 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.log
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# === Configuración / IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Docker ===
+docker-data/
+docker-compose.override.yml
+.docker/
+*.pid
+
+# === Dependencias ===
+requirements.lock
+Pipfile.lock
+poetry.lock
+
+# === Archivos temporales ===
+*.tmp
+*.bak
+*.orig
+*.save
+*.DS_Store
+Thumbs.db
+
+# === Git Assistant Cache ===
+.gitasistant/
+.cache/
