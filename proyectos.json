@@ -1,4 +1,5 @@
 [
-    { "name": "JCuellar", "path": "D:\\proyectos\\JCuellar" },
+    { "name": "Mi Proyecto 1", "path": "C:\\ruta\\a\\mi\\proyecto1" },
+    { "name": "Mi Proyecto 2", "path": "C:\\ruta\\a\\mi\\proyecto2" },
     { "name": "Git-Assistant", "path": "D:\\proyectos\\git_asistant" }
-] 
+]
