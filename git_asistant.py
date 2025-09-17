@@ -9,6 +9,9 @@ import signal
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 
+# Directorio donde se encuentra este script
+SCRIPT_DIR = Path(__file__).parent.resolve()
+
 def ensure_dependencies(requirements_file: str = "requirements.txt") -> None:
     """
     Garantiza que las dependencias de requirements.txt están instaladas.
@@ -16,7 +19,8 @@ def ensure_dependencies(requirements_file: str = "requirements.txt") -> None:
     - Reintenta con --user si falla por permisos.
     - Sale con código 1 si no puede instalarlas.
     """
-    req = Path(requirements_file).expanduser().resolve()
+    # Usar la ruta relativa al directorio del script
+    req = SCRIPT_DIR / requirements_file
     if not req.exists():
         print(f"[deps] No se encontró {req}. Si no quieres dependencias, crea un requirements.txt vacío.")
         return
@@ -206,7 +210,9 @@ def browse_and_select_files(repo_path: Path) -> List[str]:
             continue
         
         if choice.strip() == "¡":
-            ai_panel()
+            # ai_panel()  # Función no implementada
+            console.print("[yellow]¡Easter egg encontrado! 🎉 Pero esa función aún no está implementada.[/yellow]")
+            continue
 
         if choice.lower() == "l":
             if selected:
@@ -529,7 +535,12 @@ def main():
     # Pedir fichero de proyectos
     default_file = "proyectos.json"
     file_path_str = Prompt.ask("¿Cuál es tu fichero de configuración (por defecto proyectos.json)?", default=default_file)
-    file_path = Path(file_path_str).expanduser().resolve()
+    
+    # Si el usuario solo puso el nombre del archivo (sin ruta), buscarlo en el directorio del script
+    if file_path_str == default_file or not ('/' in file_path_str or '\\' in file_path_str):
+        file_path = SCRIPT_DIR / file_path_str
+    else:
+        file_path = Path(file_path_str).expanduser().resolve()
 
     projects = load_projects(file_path)
     if not projects:
