@@ -6,7 +6,6 @@ import sys
 import json
 import subprocess
 import signal
-import requests
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 
@@ -53,6 +52,7 @@ def ensure_dependencies(requirements_file: str = "requirements.txt") -> None:
 
 ensure_dependencies("requirements.txt")
 
+import requests
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
